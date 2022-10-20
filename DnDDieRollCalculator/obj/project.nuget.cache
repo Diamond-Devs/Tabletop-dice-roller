@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NIbCAe9iW4BbH3Kgt7Vr2N0tFeyTlbvR9GMkLduI/U+IxeMELQqu3/jb4Lh9NJDKUyrI0CtRUkW0J1B+qp4CHw==",
+  "dgSpecHash": "BHoLcjpKb9vT+D+T0NVmMy8B5m7f+LFAK1hhkoPe1ccJZNukR3YDCZyuKAntMF74/u68mVb7kEY/maxMWB/fPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\DndDieRollCalculator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

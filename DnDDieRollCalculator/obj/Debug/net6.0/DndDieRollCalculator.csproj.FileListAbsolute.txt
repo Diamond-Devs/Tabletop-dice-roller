@@ -1,0 +1,15 @@
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\bin\Debug\net6.0\DndDieRollCalculator.exe
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\bin\Debug\net6.0\DndDieRollCalculator.deps.json
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\bin\Debug\net6.0\DndDieRollCalculator.runtimeconfig.json
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\bin\Debug\net6.0\DndDieRollCalculator.dll
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\bin\Debug\net6.0\DndDieRollCalculator.pdb
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.csproj.AssemblyReference.cache
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.AssemblyInfoInputs.cache
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.AssemblyInfo.cs
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.csproj.CoreCompileInputs.cache
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.dll
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\refint\DndDieRollCalculator.dll
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.pdb
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\DndDieRollCalculator.genruntimeconfig.cache
+C:\Users\riley\Desktop\DieRoll\DnDDieRollCalculator\obj\Debug\net6.0\ref\DndDieRollCalculator.dll

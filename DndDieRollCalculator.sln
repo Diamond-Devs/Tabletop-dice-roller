@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "DnDDieRollCalculator\ConsoleApp1.csproj", "{FDA6F805-715B-488C-ABC8-F857717DAFAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DndDieRollCalculator", "DnDDieRollCalculator\DndDieRollCalculator.csproj", "{F0D3C802-E5A6-49F3-AD6A-5F8E2115BC23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDA6F805-715B-488C-ABC8-F857717DAFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDA6F805-715B-488C-ABC8-F857717DAFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDA6F805-715B-488C-ABC8-F857717DAFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDA6F805-715B-488C-ABC8-F857717DAFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0D3C802-E5A6-49F3-AD6A-5F8E2115BC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D3C802-E5A6-49F3-AD6A-5F8E2115BC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D3C802-E5A6-49F3-AD6A-5F8E2115BC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D3C802-E5A6-49F3-AD6A-5F8E2115BC23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2D1DE750-D591-4708-BE57-5FB5BC96D8D2}
+		SolutionGuid = {4B4E67E9-5168-41E0-8993-9D605B4D048A}
 	EndGlobalSection
 EndGlobal

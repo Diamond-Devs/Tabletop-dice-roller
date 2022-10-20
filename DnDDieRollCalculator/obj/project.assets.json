@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\DndDieRollCalculator.csproj",
+      "projectName": "DndDieRollCalculator",
+      "projectPath": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\DndDieRollCalculator.csproj",
       "packagesPath": "C:\\Users\\riley\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\riley\\Desktop\\DieRoll\\DnDDieRollCalculator\\obj\\",
       "projectStyle": "PackageReference",
