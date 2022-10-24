@@ -3,15 +3,15 @@ namespace RollReturn
 {
     class Program
     {
-        static int CalculateRoll(int dievalue)
+        static int CalculateRoll(int dieValue)
         {
 
             Random random = new Random();
-            int Roll = 0;
+            int roll = 0;
 
-            Roll += random.Next(1, dievalue);
+            roll += random.Next(1, dieValue);
 
-            return Roll;
+            return roll;
         }
         
         static void Main(string[] args)
