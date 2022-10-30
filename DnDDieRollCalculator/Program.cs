@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Net;
 using Discord.WebSocket;
 using System;
 using System.IO;
@@ -6,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace Discordbot
 {
-    class Program
+    class DieRoller
     {
         public static void Main(string[] args)
-        => new Program().MainAsync().GetAwaiter().GetResult();
+        => new DieRoller().InitializeClient().GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
-        public async Task MainAsync()
+        public async Task InitializeClient()
         {
             _client = new DiscordSocketClient();
-            _client.Log += Log;
-
+            _client.Log += LogUserMessage;
             var token = File.ReadAllText("token.txt");
 
             await _client.LoginAsync(TokenType.Bot, token);
@@ -25,10 +25,11 @@ namespace Discordbot
             await Task.Delay(-1);
         }
 
-        private Task Log(LogMessage msg)
+        private Task LogUserMessage(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
+
     }
 }
