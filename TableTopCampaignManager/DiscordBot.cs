@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Net;
 using Discord.WebSocket;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -28,6 +29,25 @@ namespace Discordbot
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
+        }
+        public async Task Client_Ready()
+        {
+            ulong guildId = Convert.ToUInt64(File.ReadAllText("guildid.txt"));
+
+            var guildCommand = new SlashCommandBuilder()
+                .WithName("roll-die")
+                .WithDescription("Rolls a DnD die with values between 4 and 20.")
+                .AddOption("die-value", ApplicationCommandOptionType.Number, "The number of sides on the die", isRequired: true);
+
+            try
+            {
+                await _client.Rest.CreateGuildCommand(guildCommand.Build(), guildId);
+            }
+            catch (ApplicationCommandException exception)
+            {
+                var json = JsonConvert.SerializeObject(exception, Formatting.Indented);
+                Console.WriteLine(json);
+            }
         }
     }
 }
