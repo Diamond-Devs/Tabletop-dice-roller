@@ -16,9 +16,9 @@ namespace Discordbot
         public async Task InitializeClient()
         {
             _client = new DiscordSocketClient();
-            _client.Ready += Client_Ready;
+            _client.Ready += Initialize_Commands;
             _client.Log += LogUserMessage;
-            var token = File.ReadAllText("token.txt");
+            var token = File.ReadAllText("C:\\Users\\riley\\Desktop\\TableTopCampaignManager\\token.txt");
 
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
@@ -30,14 +30,15 @@ namespace Discordbot
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public async Task Client_Ready()
+        public async Task Initialize_Commands()
         {
-            ulong guildId = Convert.ToUInt64(File.ReadAllText("guildid.txt"));
+            ulong guildId = Convert.ToUInt64(File.ReadAllText("C:\\Users\\riley\\Desktop\\TableTopCampaignManager\\guildid.txt"));
 
             var guildCommand = new SlashCommandBuilder()
                 .WithName("roll-die")
-                .WithDescription("Rolls a DnD die with values between 4 and 20.")
-                .AddOption("die-value", ApplicationCommandOptionType.Number, "The number of sides on the die", isRequired: true);
+                .WithDescription("Rolls a DnD die (with a value between 4 and 20) one or more times.")
+                .AddOption("die-type", ApplicationCommandOptionType.Number, "The number of sides on the die", isRequired: true)
+                .AddOption("number-of-rolls", ApplicationCommandOptionType.Number, "Number of times to roll the die", isRequired: true);
 
             try
             {
