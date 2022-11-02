@@ -16,7 +16,7 @@ namespace Discordbot
         public async Task InitializeClient()
         {
             _client = new DiscordSocketClient();
-            _client.Ready += Initialize_Commands;
+            _client.Ready += InitializeCommands;
             _client.Log += LogUserMessage;
             var token = File.ReadAllText("token.txt");
 
@@ -30,18 +30,18 @@ namespace Discordbot
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public async Task Initialize_Commands()
+        public async Task InitializeCommands()
         {
             ulong guildId = Convert.ToUInt64(File.ReadAllText("guildid.txt"));
 
-            var guildCommand = new SlashCommandBuilder()
+            var rollCommand = new SlashCommandBuilder()
                 .WithName("roll")
                 .WithDescription("Rolls a DnD die (with a value between 4 and 20) one or more times.")
                 .AddOption("dice", ApplicationCommandOptionType.Number, "To roll a 17 die 3 times, input '3d17'", isRequired: true);
 
             try
             {
-                await _client.Rest.CreateGuildCommand(guildCommand.Build(), guildId);
+                await _client.Rest.CreateGuildCommand(rollCommand.Build(), guildId);
             }
             catch (ApplicationCommandException exception)
             {
