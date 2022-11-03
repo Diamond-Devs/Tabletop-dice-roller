@@ -18,7 +18,7 @@ namespace Discordbot
             _client = new DiscordSocketClient();
             _client.Ready += InitializeCommands;
             _client.Log += LogUserMessage;
-            var token = File.ReadAllText("token.txt");
+            var token = Environment.GetEnvironmentVariable("token");
 
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
@@ -32,7 +32,7 @@ namespace Discordbot
         }
         public async Task InitializeCommands()
         {
-            ulong guildId = Convert.ToUInt64(File.ReadAllText("guildid.txt"));
+            ulong guildId = Convert.ToUInt64(Environment.GetEnvironmentVariable("guildid"));
 
             var rollCommand = new SlashCommandBuilder()
                 .WithName("roll")
