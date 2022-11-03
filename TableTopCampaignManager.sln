@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DndDieRollCalculator", "DnDDieRollCalculator\DndDieRollCalculator.csproj", "{ADD4A096-427D-45C3-918A-5C2CFF148466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DndDieRollCalculator", "TableTopCampaignManager\DndDieRollCalculator.csproj", "{21ECFC04-1FB5-4786-B28F-9EFF73B44002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ADD4A096-427D-45C3-918A-5C2CFF148466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADD4A096-427D-45C3-918A-5C2CFF148466}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADD4A096-427D-45C3-918A-5C2CFF148466}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADD4A096-427D-45C3-918A-5C2CFF148466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21ECFC04-1FB5-4786-B28F-9EFF73B44002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ECFC04-1FB5-4786-B28F-9EFF73B44002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21ECFC04-1FB5-4786-B28F-9EFF73B44002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21ECFC04-1FB5-4786-B28F-9EFF73B44002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {334B65CD-188C-47A0-B78E-6DB5C077B286}
+		SolutionGuid = {EA1D107E-3557-449E-B87F-7A96312B11C6}
 	EndGlobalSection
 EndGlobal
