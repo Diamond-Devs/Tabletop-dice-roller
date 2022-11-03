@@ -13,7 +13,7 @@ namespace Discordbot
         public static void Main(string[] args)
         => new DieRoller().InitializeClient().GetAwaiter().GetResult();
         private DiscordSocketClient _client;
-        public async Task InitializeClient()
+        private async Task InitializeClient()
         {
             _client = new DiscordSocketClient();
             _client.Ready += InitializeCommands;
@@ -30,7 +30,7 @@ namespace Discordbot
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public async Task InitializeCommands()
+        private async Task InitializeCommands()
         {
             ulong guildId = Convert.ToUInt64(Environment.GetEnvironmentVariable("guildid"));
 
