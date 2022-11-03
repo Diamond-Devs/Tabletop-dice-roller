@@ -49,5 +49,14 @@ namespace Discordbot
                 Console.WriteLine(json);
             }
         }
+        private async Task SlashCommandHandler(SocketSlashCommand command)
+        {
+            switch (command.Data.Name)
+            {
+                case "roll":
+                    await HandleRollCommand(command);
+                    break;
+            }
+        }
     }
 }
