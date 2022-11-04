@@ -58,5 +58,17 @@ namespace Discordbot
                     break;
             }
         }
+        private static int[] CalculateRoll(string userInput)
+        {
+            Random random = new Random();
+            int numberOfRolls = Int32.Parse(userInput.Split('d')[0]);
+            int dieValue = Int32.Parse(userInput.Split('d')[1]);
+            int[] calculatedValues = new int[numberOfRolls];
+            for (int i = 0; i < numberOfRolls; i++)
+            {
+                calculatedValues[i] = random.Next(1, dieValue+1);
+            }
+            return calculatedValues;
+        }
     }
 }
