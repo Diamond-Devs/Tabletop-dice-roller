@@ -2,7 +2,9 @@
 using Discord.Net;
 using Discord.WebSocket;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -17,6 +19,7 @@ namespace Discordbot
         {
             _client = new DiscordSocketClient();
             _client.Ready += InitializeCommands;
+            _client.SlashCommandExecuted += SlashCommandHandler;
             _client.Log += LogUserMessage;
             var token = Environment.GetEnvironmentVariable("token");
 
@@ -36,8 +39,8 @@ namespace Discordbot
 
             var rollCommand = new SlashCommandBuilder()
                 .WithName("roll")
-                .WithDescription("Rolls a DnD die (with a value between 4 and 20) one or more times.")
-                .AddOption("dice", ApplicationCommandOptionType.Number, "To roll a 17 die 3 times, input '3d17'", isRequired: true);
+                .WithDescription("Rolls a DnD die (with a value between 4 and 20) between 1 to 10 times.")
+                .AddOption("dice", ApplicationCommandOptionType.String, "To roll a 17 die 3 times, input '3d17'", isRequired: true);
 
             try
             {
@@ -55,7 +58,7 @@ namespace Discordbot
             {
                 case "roll":
                     await HandleRollCommand(command);
-                    break;
+                    break;  
             }
         }
         private static int[] CalculateRoll(string userInput)
@@ -69,6 +72,23 @@ namespace Discordbot
                 calculatedValues[i] = random.Next(1, dieValue+1);
             }
             return calculatedValues;
+        }
+        private async Task HandleRollCommand(SocketSlashCommand command)
+        {
+            var userInput = CalculateRoll(command.Data.Options.First().Value.ToString());
+            Embed[] embedsArray = new Embed[userInput.Length];
+            for(int i = 0; i < embedsArray.Length; i++)
+            {
+                var embedBuilder = new EmbedBuilder()
+                    .WithAuthor(command.User)
+                    .WithTitle("Roll Return")
+                    .WithDescription($"Your roll value is: {userInput[i]}")
+                    .WithColor(Color.Green)
+                    .WithCurrentTimestamp();
+                embedsArray[i] = embedBuilder.Build();
+            }
+                
+            await command.RespondAsync(embeds: embedsArray);
         }
     }
 }
