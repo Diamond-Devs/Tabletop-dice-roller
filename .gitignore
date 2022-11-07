@@ -12,6 +12,7 @@
 *token.txt
 *guildid.txt
 *Properties
+*.sln
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
