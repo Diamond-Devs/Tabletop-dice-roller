@@ -61,34 +61,38 @@ namespace Discordbot
                     break;  
             }
         }
-        private static int[] CalculateRoll(string userInput)
+        private static int[] CalculateRoll(string userInput, SocketSlashCommand command)
         {
             Random random = new Random();
             int numberOfRolls = Int32.Parse(userInput.Split('d')[0]);
             int dieValue = Int32.Parse(userInput.Split('d')[1]);
             int[] calculatedValues = new int[numberOfRolls];
-            for (int i = 0; i < numberOfRolls; i++)
+            if (numberOfRolls > 10)
             {
-                calculatedValues[i] = random.Next(1, dieValue+1);
+                command.RespondAsync(text: "That's more than 10 rolls! 10 is the maximum.");
+                return null;
             }
-            return calculatedValues;
+            else
+            {
+                for (int i = 0; i < numberOfRolls; i++)
+                {
+                    calculatedValues[i] = random.Next(1, dieValue + 1);
+                }
+                return calculatedValues;
+            }
         }
         private async Task HandleRollCommand(SocketSlashCommand command)
         {
-            var userInput = CalculateRoll(command.Data.Options.First().Value.ToString());
-            Embed[] embedsArray = new Embed[userInput.Length];
-            for(int i = 0; i < embedsArray.Length; i++)
+            var userInput = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
+            if (userInput != null)
             {
-                var embedBuilder = new EmbedBuilder()
-                    .WithAuthor(command.User)
-                    .WithTitle("Roll Return")
-                    .WithDescription($"Your roll value is: {userInput[i]}")
-                    .WithColor(Color.Green)
-                    .WithCurrentTimestamp();
-                embedsArray[i] = embedBuilder.Build();
+                string rollValues = "Your roll values are: ";
+                for (int i = 0; i < userInput.Length; i++)
+                {
+                    rollValues = rollValues + userInput[i].ToString() + ", ";
+                }
+                await command.RespondAsync(text: rollValues.Remove(rollValues.Length-2));
             }
-                
-            await command.RespondAsync(embeds: embedsArray);
         }
     }
 }
