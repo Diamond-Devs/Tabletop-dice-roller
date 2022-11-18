@@ -64,12 +64,13 @@ namespace Discordbot
         private static int[] CalculateRoll(string userInput, SocketSlashCommand command)
         {
             Random random = new Random();
+            int maxRolls = 10;
             int numberOfRolls = Int32.Parse(userInput.Split('d')[0]);
             int dieValue = Int32.Parse(userInput.Split('d')[1]);
             int[] calculatedValues = new int[numberOfRolls];
-            if (numberOfRolls > 10)
+            if (numberOfRolls > maxRolls)
             {
-                command.RespondAsync(text: "That's more than 10 rolls! 10 is the maximum.");
+                command.RespondAsync(text: $"That's {numberOfRolls} rolls! 10 is the maximum.");
                 return null;
             }
             else
