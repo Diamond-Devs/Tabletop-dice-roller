@@ -83,13 +83,13 @@ namespace Discordbot
         }
         private async Task HandleRollCommand(SocketSlashCommand command)
         {
-            var userInput = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
-            if (userInput != null)
+            var discordUserInputString = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
+            if (discordUserInputString != null)
             {
                 string rollValues = "Your roll values are: ";
-                for (int i = 0; i < userInput.Length; i++)
+                for (int i = 0; i < discordUserInputString.Length; i++)
                 {
-                    rollValues = rollValues + userInput[i].ToString() + ", ";
+                    rollValues = rollValues + discordUserInputString[i].ToString() + ", ";
                 }
                 await command.RespondAsync(text: rollValues.Remove(rollValues.Length-2));
             }
