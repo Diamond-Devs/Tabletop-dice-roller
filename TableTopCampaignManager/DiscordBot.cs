@@ -85,9 +85,10 @@ namespace Discordbot
         private async Task HandleRollCommand(SocketSlashCommand command)
         {
             var discordUserInputString = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
+            var discordUserName = command.User;
             if (discordUserInputString != null)
             {
-                string rollValues = "User's roll values are: ";
+                string rollValues = $"{discordUserName}'s roll values are: ";
                 int sumValues = 0;
                 for (int i = 0; i < discordUserInputString.Length; i++)
                 {
