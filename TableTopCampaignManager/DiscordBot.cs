@@ -87,12 +87,14 @@ namespace Discordbot
             var discordUserInputString = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
             if (discordUserInputString != null)
             {
-                string rollValues = "Your roll values are: ";
+                string rollValues = "User's roll values are: ";
+                int sumValues = 0;
                 for (int i = 0; i < discordUserInputString.Length; i++)
                 {
                     rollValues = rollValues + discordUserInputString[i].ToString() + ", ";
+                    sumValues += discordUserInputString[i];
                 }
-                await command.RespondAsync(text: rollValues.Remove(rollValues.Length-2));
+                await command.RespondAsync(text: rollValues.Remove(rollValues.Length-2) + System.Environment.NewLine + $"Result: {sumValues}.");
             }
         }
     }
