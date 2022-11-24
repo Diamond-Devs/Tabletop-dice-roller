@@ -2,7 +2,9 @@
 using Discord.Net;
 using Discord.WebSocket;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -13,10 +15,11 @@ namespace Discordbot
         public static void Main(string[] args)
         => new DieRoller().InitializeClient().GetAwaiter().GetResult();
         private DiscordSocketClient _client;
-        public async Task InitializeClient()
+        private async Task InitializeClient()
         {
             _client = new DiscordSocketClient();
             _client.Ready += InitializeCommands;
+            _client.SlashCommandExecuted += SlashCommandHandler;
             _client.Log += LogUserMessage;
             var token = Environment.GetEnvironmentVariable("token");
 
@@ -30,14 +33,14 @@ namespace Discordbot
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public async Task InitializeCommands()
+        private async Task InitializeCommands()
         {
             ulong guildId = Convert.ToUInt64(Environment.GetEnvironmentVariable("guildid"));
 
             var rollCommand = new SlashCommandBuilder()
                 .WithName("roll")
-                .WithDescription("Rolls a DnD die (with a value between 4 and 20) one or more times.")
-                .AddOption("dice", ApplicationCommandOptionType.Number, "To roll a 17 die 3 times, input '3d17'", isRequired: true);
+                .WithDescription("Rolls a DnD die (with a value between 4 and 20) between 1 to 10 times.")
+                .AddOption("dice", ApplicationCommandOptionType.String, "To roll a 17 die 3 times, input '3d17'", isRequired: true);
 
             try
             {
@@ -47,6 +50,52 @@ namespace Discordbot
             {
                 var json = JsonConvert.SerializeObject(exception, Formatting.Indented);
                 Console.WriteLine(json);
+            }
+        }
+        private async Task SlashCommandHandler(SocketSlashCommand command)
+        {
+            switch (command.Data.Name)
+            {
+                case "roll":
+                    await HandleRollCommand(command);
+                    break;  
+            }
+        }
+        private static int[] CalculateRoll(string userInput, SocketSlashCommand command)
+        {
+            Random random = new Random();
+            int maxRolls = 10;
+            int numberOfRolls = Int32.Parse(userInput.Split('d')[0]);
+            int dieValue = Int32.Parse(userInput.Split('d')[1]);
+            int[] calculatedValues = new int[numberOfRolls];
+            if (numberOfRolls > maxRolls)
+            {
+                command.RespondAsync(text: $"That's {numberOfRolls} rolls! 10 is the maximum.");
+                return null;
+            }
+            else
+            {
+                for (int i = 0; i < numberOfRolls; i++)
+                {
+                    calculatedValues[i] = random.Next(1, dieValue + 1);
+                }
+                return calculatedValues;
+            }
+        }
+        private async Task HandleRollCommand(SocketSlashCommand command)
+        {
+            var discordUserInputString = CalculateRoll(command.Data.Options.First().Value.ToString(),command);
+            var discordUserName = command.User.Username;
+            if (discordUserInputString != null)
+            {
+                string rollValues = $"{discordUserName}'s roll values are: ";
+                int sumValues = 0;
+                for (int i = 0; i < discordUserInputString.Length; i++)
+                {
+                    rollValues = rollValues + discordUserInputString[i].ToString() + ", ";
+                    sumValues += discordUserInputString[i];
+                }
+                await command.RespondAsync(text: rollValues.Remove(rollValues.Length-2) + System.Environment.NewLine + $"Result: {sumValues}.");
             }
         }
     }
